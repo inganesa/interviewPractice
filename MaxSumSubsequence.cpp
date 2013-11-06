@@ -5,14 +5,14 @@ using namespace std;
 template <class T,size_t N>
 T maxSumSubsequence(array<T,N>& data)
 {
-	T sum =0,maxSum = 0;
+	T sum =0,maxSum = 0, zero = static_cast<T>(O);
 	//template<class T, size_t N>
 	typename array<T,N>::iterator it;
 	for( it = data.begin(); it !=data.end(); it++)
 	{
 		sum = sum+*it;
-		if(sum < static_cast<T>(0))
-			sum = static_cast<T>(0);
+		if(sum < zero)
+			sum = zero;
 		else if(maxSum < sum)
 			maxSum = sum;
 	}
