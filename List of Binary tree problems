@@ -15,4 +15,7 @@
 
 1. lowest common ancestor (recursive & iterative for both binary tree an binary search tree*/
 2. sum of all th elements in a tree, average etc
-3. 
+3. Is a valid BST?
+4. Find the height of the binary tree with and without using recursion.
+
+
