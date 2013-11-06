@@ -1,0 +1,18 @@
+/* different types of traversal*/
+
+1. preorder traversal (recursion and iterative method)
+2. inorder traversal( recursion and iterative method)
+3. post order traversal( recursion and iterative method)
+4. level orde traversal(BFS)
+
+/*build binary search tree*/
+
+1. Inserting a node
+2. deleting a node
+
+
+/*others*/
+
+1. lowest common ancestor (recursive & iterative for both binary tree an binary search tree*/
+2. sum of all th elements in a tree, average etc
+3. 
