@@ -39,8 +39,7 @@ node<T>* recLowestCommonAncestor(node<T> *root, T val1, T val2)
 		return root;
 	if(leftlca == nullptr)
 		return rightlca;
-	else
-		return leftlca;
+	return leftlca;
 }
 
 /* Driver program for traversal algorithms*/
