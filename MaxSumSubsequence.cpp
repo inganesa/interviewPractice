@@ -2,7 +2,7 @@
 #include <array>
 using namespace std;
 
-template <class T,size_t N>
+/*template <class T,size_t N>
 T maxSumSubsequence(array<T,N>& data)
 {
 	T sum =0,maxSum = 0, zero = static_cast<T>(O);
@@ -17,6 +17,25 @@ T maxSumSubsequence(array<T,N>& data)
 			maxSum = sum;
 	}
 	return maxSum;
+}*/
+
+/*Kadane's Algorithm: This varaition of function handles negative numbers aswell */
+template <class T,size_t N>
+T maxSumSubsequence(array<T,N>& data)
+{
+        T sum = data[0], maxSum = data[0];
+        size_t i;
+        for(i = 1; i < data.size(); i++)
+        {
+                if(sum < 0)
+                	sum = data[i];
+                else
+                	sum = sum + data[i];
+                
+                if(maxSum < sum)
+                        maxSum = sum;
+        }
+        return maxSum;
 }
 
 int main() {
