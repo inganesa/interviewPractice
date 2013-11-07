@@ -28,15 +28,15 @@ int recvHeightofBT(node<T>* root)
 {
 	if(root == nullptr)
 	{
-		return 0;
+ 		return 0;
 	}
 	else
 	{
 		int leftHeight = recvHeightofBT(root->left);
 		int rightHeight= recvHeightofBT(root->right);
-        int height = (leftHeight >= rightHeight)? leftHeight : rightHeight;
-        height++;
-       	return height;
+	        int height = (leftHeight >= rightHeight)? leftHeight : rightHeight;
+	        height++;
+	 	return height;
 	}
 
 }
