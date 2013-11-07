@@ -54,19 +54,66 @@ void iterativePreorder(node<T> *root, vector<T> &data)
     Note that right child is pushed first so that left is processed first */
 	stack<node<T>*> S;
 	S.push(root);
+	node<T>* current;
 	while(S.empty() == false)
 	{
 		//struct node<T>* nodeStack = S.top();
-		root = S.top();
-		data.push_back(root ->data);
+		current = S.top();
+		data.push_back(current ->data);
 		//cout << data.back() << endl;
 		S.pop();
 		
-		if(root->right != nullptr)
-			S.push(root->right);
-		if(root->left != nullptr)
-			S.push(root->left);
+		if(current->right != nullptr)
+			S.push(current->right);
+		if(current->left != nullptr)
+			S.push(current->left);
 	}
+}
+
+
+/*Inorder Traversal Algorithm*/
+/*
+1) Create an empty stack S.
+2) Initialize current node as root
+3) Push the current node to S and set current = current->left until current is NULL
+4) If current is NULL and stack is not empty then 
+     a) Pop the top item from stack.
+     b) Print the popped item, set current = current->right 
+     c) Go to step 3.
+5) If current is NULL and stack is empty then we are done.
+*/
+
+/*iterative Inorder traversal algorithm*/
+template<class T>
+void iterativeInorder(node<T> *root, vector<T> &data)
+{
+        /*base case*/
+        if(root == nullptr)
+        {
+                cout << "null root" <<endl;
+                return;
+        }
+       
+        stack<node<T>*> S;
+        node<T>* current = root;
+        bool run = true;
+        while(run == true)
+        {
+	        while(current != nullptr)
+	        {
+	        	S.push(root);
+	        	current = current->left;
+	        }
+	        if(S.empty() == false && current == nullptr)
+	        {
+	            current = S.top();
+	            data.push_back(current->data);
+	            S.pop();
+	            current = current->right;
+	        }
+	        else
+	        	run = false;
+        }
 }
 
 /* Driver program for traversal algorithms*/
@@ -88,7 +135,14 @@ int main() {
   iterativePreorder(root, data);
   size_t i;
   cout << " Iterative pre order list" << endl;
-  for( int i = 0; i < data.size(); i++)
+  for(i = 0; i < data.size(); i++)
+  {
+  	cout << data[i] << "\t";
+  }
+  data.clear();
+  cout << "\n Iterative Inorder list" <<endl;
+  iterativeInorder(root,data);
+  for( i = 0; data.size();i++)
   {
   	cout << data[i] << "\t";
   }
