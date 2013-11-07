@@ -20,9 +20,9 @@ Right child is pushed before left child to make sure that left subtree is proces
 /* data structure for a node*/
 template <class T>
 struct node{
-	T data;
-	node* left;
-	node* right;
+        T data;
+        node* left;
+        node* right;
 };
 
 
@@ -41,33 +41,33 @@ struct node<T>* newNode(T data)
 template<class T>
 void iterativePreorder(node<T> *root, vector<T> &data)
 {
-	/*base case*/
-	if(root == nullptr)
-	{
-		cout << "null root" <<endl;
-		return;
-	}
-	/* Pop all items one by one. Do following for every popped item
+        /*base case*/
+        if(root == nullptr)
+        {
+                cout << "null root" <<endl;
+                return;
+        }
+        /* Pop all items one by one. Do following for every popped item
        a) add to the vector
        b) push its right child
        c) push its left child
     Note that right child is pushed first so that left is processed first */
-	stack<node<T>*> S;
-	S.push(root);
-	node<T>* current;
-	while(S.empty() == false)
-	{
-		//struct node<T>* nodeStack = S.top();
-		current = S.top();
-		data.push_back(current ->data);
-		//cout << data.back() << endl;
-		S.pop();
-		
-		if(current->right != nullptr)
-			S.push(current->right);
-		if(current->left != nullptr)
-			S.push(current->left);
-	}
+        stack<node<T>*> S;
+        S.push(root);
+        node<T>* current;
+        while(S.empty() == false)
+        {
+                //struct node<T>* nodeStack = S.top();
+                current = S.top();
+                data.push_back(current ->data);
+                //cout << data.back() << endl;
+                S.pop();
+                
+                if(current->right != nullptr)
+                        S.push(current->right);
+                if(current->left != nullptr)
+                        S.push(current->left);
+        }
 }
 
 
@@ -90,8 +90,8 @@ void iterativeInorder(node<T> *root, vector<T> &data)
         /*base case*/
         if(root == nullptr)
         {
-                cout << "null root" <<endl;
-                return;
+            cout << "null root" <<endl;
+            return;
         }
        
         stack<node<T>*> S;
@@ -99,26 +99,26 @@ void iterativeInorder(node<T> *root, vector<T> &data)
         bool run = true;
         while(run == true)
         {
-	        while(current != nullptr)
-	        {
-	        	S.push(root);
-	        	current = current->left;
-	        }
-	        if(S.empty() == false && current == nullptr)
-	        {
-	            current = S.top();
-	            data.push_back(current->data);
-	            S.pop();
-	            current = current->right;
-	        }
-	        else
-	        	run = false;
+            while(current != nullptr)
+            {
+            	S.push(current);
+                current = current->left;
+            }
+            if(S.empty() == false && current == nullptr)
+            {
+                current = S.top();
+                data.push_back(current->data);
+                S.pop();
+                current = current->right;
+            }
+            else
+               run = false;
         }
 }
 
 /* Driver program for traversal algorithms*/
 int main() {
-	/* Constructed binary tree is
+        /* Constructed binary tree is
             10
           /   \
         8      2
@@ -132,19 +132,19 @@ int main() {
   root->left->right = newNode(5);
   root->right->left = newNode(2);
   vector<int> data;
-  iterativePreorder(root, data);
+ iterativePreorder(root, data);
   size_t i;
   cout << " Iterative pre order list" << endl;
   for(i = 0; i < data.size(); i++)
   {
-  	cout << data[i] << "\t";
+          cout << data[i] << "\t";
   }
   data.clear();
   cout << "\n Iterative Inorder list" <<endl;
   iterativeInorder(root,data);
-  for( i = 0; data.size();i++)
+  for(i = 0;i< data.size();i++)
   {
-  	cout << data[i] << "\t";
+          cout << data[i] << "\t";
   }
-	return 0;
+        return 0;
 }
