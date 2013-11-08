@@ -1,57 +1,59 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<INCOMPLETE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #include <iostream>
+#include <queue>
+#include <math>
+#include <algorithm>
 using namespace std;
 
-/*data structure for a node*/
-template <class T>
-struct node {
-	int data;
-	node<T>* next;
+/*K Nearest points to origin*/
+struct point{
+	int x;
+	int y;
 };
 
-/* function to create a newNode*/
-template <class T>
-node<T>* newNode(T data)
+/*compute distance*/
+int distance(point p)
 {
-	node<T>* node = new struct node<T>;
-	node->data = data;
-	node->next = nullptr;
-	return node;
+	return (static_cast<int>(sqrt(pow(p.x,2) + pow(p.y,2))));
 }
 
-/* detect circularity in linked list*/
-template <class T>
-bool isCircular(node<T> *root)
+class isNear
 {
-	/*base case*/
-	if( root == nullptr)
-		return false;
-	node<T> *pFast;
-	node<T> *pSlow;
-	pFast = pSlow = root;
-	bool circular =  false;
-	while(pFast != nullptr)
+	public:
+	bool operator()(point &p1, point &p2) /* returns true if p1 is farer than p2*/
 	{
-		pFast = pFast->next;
-		if(pFast != nullptr) /*increment the pointer by twice*/
-			pFast = pFast->next;
+		if(distance(p1) > distance(p2))
+			return true;
 		else
-			return false; /*reached end*/
-		pSlow = pSlow->next;
-		if(pSlow == pFast)
-		{
-			return true; /*found circular*/
-		}
+			return false;
 	}
-	return false; /*reached end*/
 }
+
+array<point,size_t> findKNearestNeighbour(const array<point,size_t> &neighbors, int K)
+{
+	vector<point> KNN;
+	
+	priority_queue<point, vector<point>, isNear> pq;
+	for(int i = 0 ; i < K; i++)
+	{
+		pq.push(array[i]);
+	}
+	
+//	array<point,size_t>::iterator it;
+    for(int i = K; i < neighbors.size(); i++)
+    {
+    	if(distance(pq.top()) > distance(neighbors[i]))
+    		{
+    			pq.pop();
+    			pq.push(neighbors[i]);
+    		}
+    }
+    
+}
+
 int main() {
 	// your code goes here
-	node<int> *circularList = newNode(5);
-	circularList->next = newNode(6);
-	circularList->next->next = circularList;
-	node<int> *noncircularList = newNode(6);
-	noncircularList->next = newNode(7);
-	cout << "Case 1 " << isCircular(circularList) <<endl;
-	cout << "Case 2 " << isCircular(noncircularList)<<endl;
+	array<point,5> = {{2,1},{10,10},{2,5},{1,1},{3,4}};
+	array<point,2> = findNearestNeighbor
 	return 0;
 }
