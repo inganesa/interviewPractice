@@ -1,0 +1,8 @@
+/*list of all linked list problems to solve*/
+
+1. reverse a singly linked list.(recursive solution and non recursive solution)
+2. insert a node
+3. delete a node
+4. delete a node in O(1) time;
+5. merge two sorted list.
+6. detect circularity in a list.
